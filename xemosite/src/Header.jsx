@@ -27,7 +27,7 @@ function Header({ currentView, setView }) {
 
   return (
     <header className={`header-wrapper ${isScrolled ? 'collapsed' : ''}`}>
-      <div className="container header-container">
+      <div className={`header-container ${isScrolled ? '' : 'container'}`}>
         <a className="logo-link" onClick={() => handleNavClick('home')}>
           <img src={xemoLogo} alt="XEMO Logo" className="logo-img" />
         </a>
