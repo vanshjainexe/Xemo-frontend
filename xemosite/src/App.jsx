@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import Header from './Header.jsx';
 import SideRays from './SideRays';
 import Strands from './Strands'; // React Bits Strands integration
@@ -49,7 +50,6 @@ function ScrollReveal({ children, className = '', style }) {
 }
 
 function App() {
-  const [currentView, setView] = useState('home');
 
   const renderHome = () => (
     <>
@@ -75,20 +75,20 @@ function App() {
         <div className="hero-content animate-fade-in-up">
           {/* Logo badge */}
           <img src={xemoLogo} alt="XEMO" className="hero-logo" />
-          
+
           <h1 className="hero-title">
             <span>Get XEMO:</span>
             <span className="gradient-text">Speak better</span>
           </h1>
-          
+
           <p className="hero-subtitle">
             A high stakes debate engine designed to debate with you, rate you, and help you get better at communicating ideas. Made for people with bold ideas, so they can never get overlooked due to lack of communication.
           </p>
-          
+
           <div className="cta-group">
-            <a 
-              href="#download" 
-              className="btn btn-android" 
+            <a
+              href="#download"
+              className="btn btn-android"
               onClick={() => alert('Redirecting to Google Play Store... (Demo)')}
             >
               <img src={playStoreIcon} alt="Google Play Store" style={{ width: '20px', height: '20px', marginRight: '10px', verticalAlign: 'middle' }} />
@@ -112,10 +112,10 @@ function App() {
             <div className="phone-mockup-wrapper mockup-center-stacked">
               <img src={phoneMockup} alt="Phone Outline" className="phone-outline" />
               <div className="screenshot-container">
-                <img 
-                  src={img4} 
-                  alt="XEMO App Dashboard speaking and ratings" 
-                  className="screenshot-img" 
+                <img
+                  src={img4}
+                  alt="XEMO App Dashboard speaking and ratings"
+                  className="screenshot-img"
                 />
               </div>
             </div>
@@ -137,7 +137,7 @@ function App() {
           <span className="section-subtitle">How it works</span>
           <h2 className="section-main-title">Crafted for perfect articulation</h2>
         </div>
-        
+
         <div className="workflow-container">
           <ScrollReveal className="workflow-step">
             <div className="workflow-icon">
@@ -216,7 +216,7 @@ function App() {
 
       {/* Testimonial Quote */}
       <ScrollReveal style={{ padding: '5rem 1.5rem', textAlign: 'center' }}>
-         <p style={{ fontStyle: 'italic', fontSize: 'clamp(1.8rem, 5vw, 2.3rem)', color: '#fff', maxWidth: '800px', margin: '0 auto', lineHeight: '1.5', fontFamily: 'var(--font-heading)' }}>
+        <p style={{ fontStyle: 'italic', fontSize: 'clamp(1.8rem, 5vw, 2.3rem)', color: '#fff', maxWidth: '800px', margin: '0 auto', lineHeight: '1.5', fontFamily: 'var(--font-heading)' }}>
           "XEMO completely changed my perspective on public speaking. Within two weeks, I was delivering keynotes with zero hesitation." </p>
         <p style={{ marginTop: '1.5rem', color: 'var(--text-muted)', fontSize: '0.95rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
           — Sarah Chen, Lead Product Designer
@@ -230,11 +230,11 @@ function App() {
             For people with bold ideas
           </h2>
         </ScrollReveal>
-        
+
         {/* Strands component spans the absolute full screen width, visible to the user, not inside any container */}
         <div className="strands-breakout">
           <Strands
-            colors={["#F97316","#7C3AED","#06B6D4"]}
+            colors={["#F97316", "#7C3AED", "#06B6D4"]}
             count={3}
             speed={0.5}
             amplitude={1.1}
@@ -256,9 +256,9 @@ function App() {
 
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="cta-group">
-            <a 
-              href="#download" 
-              className="btn btn-android" 
+            <a
+              href="#download"
+              className="btn btn-android"
               onClick={() => alert('Redirecting to Google Play Store... (Demo)')}
             >
               <img src={playStoreIcon} alt="Google Play Store" style={{ width: '20px', height: '20px', marginRight: '10px', verticalAlign: 'middle' }} />
@@ -278,7 +278,7 @@ function App() {
       </div>
       <div className="page-body">
         <p>This Privacy Notice for Xemo ('we', 'us', or 'our'), describes how and why we might access, collect, store, use, and/or share ('process') your personal information when you use our services ('Services'), including when you:</p>
-        
+
         <ul>
           <li>Download and use our mobile application (Xemo), or any other application of ours that links to this Privacy Notice</li>
           <li>Use Xemo. A app developed to help people debate, argue and speak better by making them spar with an AI debater, and evaluate them, rate them and get give them feedback to improve.</li>
@@ -325,7 +325,7 @@ function App() {
         <h3>Personal information you disclose to us</h3>
         <p><strong>In Short:</strong> We collect personal information that you provide to us.</p>
         <p>We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</p>
-        
+
         <p><strong>Personal Information Provided by You.</strong> The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
         <ul>
           <li>names</li>
@@ -604,7 +604,7 @@ function App() {
       </div>
       <div className="page-body">
         <p>Welcome to XEMO ("the App," "we," "us," or "our"). By downloading, installing, accessing, or using the XEMO application, you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, you must not use the App.</p>
-        
+
         <p><strong>PLEASE READ THESE TERMS CAREFULLY. THEY CONTAIN IMPORTANT LEGAL OBLIGATIONS AND LIMITATIONS ON YOUR RIGHTS.</strong></p>
 
         <h2>1. ACCEPTANCE OF TERMS</h2>
@@ -731,30 +731,31 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header currentView={currentView} setView={setView} />
-      
+      <Header />
+
       <main style={{ flexGrow: 1 }}>
-        {currentView === 'home' && renderHome()}
-        {currentView === 'privacy' && renderPrivacy()}
-        {currentView === 'terms' && renderTerms()}
+        <Routes>
+          <Route path="/" element={renderHome()} />
+          <Route path="/privacy-policy" element={renderPrivacy()} />
+          <Route path="/terms-of-service" element={renderTerms()} />
+        </Routes>
       </main>
 
       {/* Left-aligned footer with direct email redirection and shifted logo */}
       <footer className="footer-section">
         <div className="container footer-top" style={{ alignItems: 'flex-start', textAlign: 'left' }}>
           <div className="footer-info">
-            <a className="logo-link logo-footer-shift" style={{ justifyContent: 'flex-start', marginBottom: '1.2rem' }} onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <Link to="/" className="logo-link logo-footer-shift" style={{ justifyContent: 'flex-start', marginBottom: '1.2rem' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <img src={xemoLogo} alt="XEMO Logo" className="logo-img" style={{ height: '54px' }} />
-            </a>
+            </Link>
             <p style={{ marginLeft: '0', marginRight: '0' }}>Elevating personal articulation and speaking confidence through cutting-edge, real-time vocal analysis.</p>
           </div>
         </div>
         <div className="container footer-bottom" style={{ alignItems: 'flex-start', textAlign: 'left', gap: '1rem' }}>
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-            <a onClick={() => { setView('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Privacy Policy</a>
-            <a onClick={() => { setView('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Terms of Service</a>
-            {/* Direct Email Redirection in place of contact view */}
-            <a href="mailto:vanshjain847@gmail.com" style={{ cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Contact</a>
+            <Link to="/privacy-policy" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Privacy Policy</Link>
+            <Link to="/terms-of-service" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Terms of Service</Link>
+            <a href="mailto:vanshjain847@gmail.com" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 'bold' }}>Contact</a>
           </div>
           <p style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.5rem' }}>
             <span>&copy; {new Date().getFullYear()} XEMO</span>

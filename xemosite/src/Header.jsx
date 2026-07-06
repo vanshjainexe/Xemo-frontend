@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import xemoLogo from './assets/XEMO LOG.png';
 
-function Header({ currentView, setView }) {
+function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,29 +16,29 @@ function Header({ currentView, setView }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (view) => {
-    setView(view);
+  // Close menu on route change
+  useEffect(() => {
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, [location.pathname]);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'privacy', label: 'Privacy Policy' },
-    { id: 'terms', label: 'Terms of use' },
+    { path: '/', label: 'Home' },
+    { path: '/privacy-policy', label: 'Privacy Policy' },
+    { path: '/terms-of-service', label: 'Terms of use' },
   ];
 
   return (
     <header className={`header-wrapper ${isScrolled ? 'collapsed' : ''}`}>
       <div className={`header-container ${isScrolled ? '' : 'container'}`}>
-        <a className="logo-link" onClick={() => handleNavClick('home')}>
+        <Link to="/" className="logo-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img src={xemoLogo} alt="XEMO Logo" className="logo-img" />
-        </a>
+        </Link>
 
         {/* Mobile Hamburger Button (hidden when collapsed) */}
         {!isScrolled && (
-          <button 
-            className="menu-toggle" 
+          <button
+            className="menu-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
           >
@@ -49,13 +52,13 @@ function Header({ currentView, setView }) {
         <nav>
           <ul className={`nav-links ${mobileMenuOpen ? 'mobile-active' : ''} ${isScrolled ? 'collapsed-links' : ''}`}>
             {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  className={`nav-item ${currentView === item.id ? 'active' : ''}`}
-                  onClick={() => handleNavClick(item.id)}
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
