@@ -706,8 +706,8 @@ function App() {
         <p>We are not responsible for any decisions you make based on the content provided through the App.</p>
 
         <h2>13. AGE RESTRICTIONS</h2>
-        <p>The App is intended for users who are at least 13 years of age. By using the App, you represent and warrant that you are at least 13 years old. If you are under 18, you represent that you have obtained parental consent to use the App.</p>
-        <p>We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.</p>
+        <p>The App is intended for users who are at least 3 years of age. By using the App, you represent and warrant that you are at least 3 years old. If you are under 18, you represent that you have obtained parental consent to use the App.</p>
+        <p>We do not knowingly collect personal information from children under 3. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.</p>
 
         <h2>14. MODIFICATIONS TO THE APP</h2>
         <p>We reserve the right to modify, suspend, or discontinue the App at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the App.</p>
