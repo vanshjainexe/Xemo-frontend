@@ -56,7 +56,7 @@ function App() {
       {/* Hero Section */}
       <section className="hero-section container">
         {/* Dynamic Light Rays Background with Sharp Corner Point */}
-        <div className="hero-rays-container">
+        {/* <div className="hero-rays-container">
           <SideRays
             speed={2.5}
             rayColor1="#EAB308"
@@ -70,7 +70,7 @@ function App() {
             falloff={1.3}
             opacity={1.0}
           />
-        </div>
+        </div> */}
 
         <div className="hero-content animate-fade-in-up">
           {/* Logo badge */}
