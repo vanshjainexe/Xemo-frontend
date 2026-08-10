@@ -61,8 +61,8 @@ function App() {
             speed={2.5}
             rayColor1="#EAB308"
             rayColor2="#96c8ff"
-            intensity={2.8}
-            spread={2}
+            intensity={2.0}
+            spread={1.87}
             origin="top-right"
             tilt={0}
             saturation={1.5}
@@ -256,9 +256,8 @@ function App() {
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="cta-group">
             <a
-              href="#download"
+              href="https://play.google.com/store/apps/details?id=com.xemo.frontend"
               className="btn btn-android"
-              onClick={() => alert('Redirecting to Google Play Store... (Demo)')}
             >
               <img src={playStoreIcon} alt="Google Play Store" style={{ width: '20px', height: '20px', marginRight: '10px', verticalAlign: 'middle' }} />
               <span>Get Started for Free</span>
