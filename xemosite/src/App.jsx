@@ -62,7 +62,7 @@ function App() {
             rayColor1="#EAB308"
             rayColor2="#96c8ff"
             intensity={2.0}
-            spread={1.87}
+            spread={1.0}
             origin="top-right"
             tilt={0}
             saturation={1.5}
