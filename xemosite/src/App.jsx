@@ -62,12 +62,12 @@ function App() {
             rayColor1="#EAB308"
             rayColor2="#96c8ff"
             intensity={1.4}
-            spread={0.4}
+            spread={1.8}
             origin="top-right"
             tilt={0}
             saturation={1.5}
             blend={0.75}
-            falloff={2.8}
+            falloff={1.3}
             opacity={1.0}
           />
         </div>
