@@ -87,9 +87,8 @@ function App() {
 
           <div className="cta-group">
             <a
-              href="#download"
+              href="https://play.google.com/store/apps/details?id=com.xemo.frontend"
               className="btn btn-android"
-              onClick={() => alert('Redirecting to Google Play Store... (Demo)')}
             >
               <img src={playStoreIcon} alt="Google Play Store" style={{ width: '20px', height: '20px', marginRight: '10px', verticalAlign: 'middle' }} />
               <span>Download for Android</span>
