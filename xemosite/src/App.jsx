@@ -61,8 +61,8 @@ function App() {
             speed={2.5}
             rayColor1="#EAB308"
             rayColor2="#96c8ff"
-            intensity={2.0}
-            spread={1.0}
+            intensity={1.4}
+            spread={0.4}
             origin="top-right"
             tilt={0}
             saturation={1.5}
