@@ -150,7 +150,7 @@ p, li, label {
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Floating Glassmorphic Capsule Header & Collapsing State */
+/* Floating Ultra Glassmorphic Capsule Header & Collapsing State */
 .header-wrapper {
   position: fixed;
   top: 1.5rem;
@@ -160,16 +160,26 @@ p, li, label {
   max-width: 900px;
   height: var(--header-height);
   z-index: 100;
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  
+  /* Super Cool Glassmorphic Layers */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background-color: rgba(12, 12, 15, 0.45);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  
+  /* Refined High-End Borders & Inner Glow */
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 100px;
-  background-color: rgba(15, 15, 15, 0.55);
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
+    
   transition: var(--transition-smooth);
 }
 
-/* Collapsed Header style when scrolled */
+/* Collapsed Header Style When Scrolled */
 .header-wrapper.collapsed {
   width: 125px;
   height: 54px;
@@ -177,7 +187,14 @@ p, li, label {
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
-  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  background-color: rgba(10, 10, 12, 0.65);
+  backdrop-filter: blur(32px) saturate(220%);
+  -webkit-backdrop-filter: blur(32px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 20px 45px -10px rgba(0, 0, 0, 0.85), 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
 }
 
 .header-container {
@@ -190,7 +207,6 @@ p, li, label {
   position: relative;
 }
 
-/* No left and right margins/paddings in the collapsed header container */
 .collapsed .header-container {
   justify-content: center;
   padding: 0;
@@ -235,7 +251,6 @@ p, li, label {
   transition: var(--transition-smooth);
 }
 
-/* Hide links on collapse */
 .collapsed-links {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -365,7 +380,6 @@ p, li, label {
   display: block;
 }
 
-/* Get XEMO bold, Speak better italic & a little smaller */
 .hero-title span:first-child {
   font-family: var(--font-heading);
   font-size: clamp(3.2rem, 8vw, 4.8rem);
@@ -395,7 +409,7 @@ p, li, label {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  margin-top: 2.2rem; /* Added margin separation between text and button */
+  margin-top: 2.2rem;
 }
 
 /* Play Store Download Button */
@@ -421,20 +435,20 @@ p, li, label {
 }
 
 .btn-android:hover {
-  background-color: var(--text-primary); /* Remains solid white */
+  background-color: var(--text-primary);
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px); /* Smooth interactive float up */
+  transform: translateY(-2px);
 }
 
 .btn-android:hover span {
-  color: #000000; /* Remains black */
+  color: #000000;
 }
 
 .btn-android img {
   margin-right: 10px;
 }
 
-/* 3-Device Mockups Showcase (Adjusted Stacking Spacing & Enlarged Widths) */
+/* 3-Device Mockups Showcase */
 .showcase-wrapper {
   position: relative;
   display: flex;
@@ -449,7 +463,7 @@ p, li, label {
 .mockup-container {
   position: relative;
   width: 100%;
-  max-width: 950px; /* Expanded slightly to house separated screens */
+  max-width: 950px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -469,14 +483,14 @@ p, li, label {
 
 .mockup-left-stacked {
   width: 370px;
-  left: 10%; /* Brought slightly out from 17% to 10% to add visual separation */
+  left: 10%;
   transform: perspective(1000px) rotateY(16deg) rotateZ(-10deg) scale(0.9);
   z-index: 5;
 }
 
 .mockup-right-stacked {
   width: 370px;
-  right: 10%; /* Brought slightly out from 17% to 10% to add visual separation */
+  right: 10%;
   transform: perspective(1000px) rotateY(-16deg) rotateZ(10deg) scale(0.9);
   z-index: 5;
 }
@@ -499,7 +513,6 @@ p, li, label {
   display: block;
 }
 
-/* Positioning inside display area of Mockup PNG */
 .screenshot-container {
   position: absolute;
   top: 4.2%;
@@ -517,7 +530,7 @@ p, li, label {
   object-fit: cover;
 }
 
-/* Minimalist Workflow Styles (Select Topic -> Speak -> Get Rated -> Compete) */
+/* Minimalist Workflow Styles */
 .features-section {
   padding: 6rem 0;
   position: relative;
@@ -606,7 +619,7 @@ p, li, label {
   justify-content: center;
 }
 
-/* CTA Banner & Full Screen Width Breakout Strands Container */
+/* CTA Banner */
 .cta-banner-section {
   padding: 6rem 0;
   background-color: transparent;
@@ -615,22 +628,21 @@ p, li, label {
   width: 100%;
 }
 
-/* Breakout layout box stretching edge-to-edge (100vw) - Expanded vertically */
 .strands-breakout {
   position: relative;
   width: 100%;
-  height: 280px; /* Sized up slightly to fit randomized wave heights */
+  height: 280px;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
 }
 
-/* Footer (Left aligned, logo positioned a bit left) */
+/* Footer */
 .footer-section {
-  padding: 6rem 0 3rem; /* Sized up top padding */
+  padding: 6rem 0 3rem;
   background-color: #000000;
   position: relative;
   z-index: 10;
-  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Clean horizontal line separator */
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-top {
@@ -675,8 +687,6 @@ p, li, label {
   gap: 0.5rem;
 }
 
-
-
 .footer-bottom p {
   font-size: 0.8rem;
   text-align: left;
@@ -692,13 +702,13 @@ p, li, label {
   z-index: 10;
 }
 
-  .page-header,
-  .page-header h1,
-  .page-header p {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: 0;
-  }
+.page-header,
+.page-header h1,
+.page-header p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 0;
+}
 
 .page-header {
   margin-bottom: 3.5rem;
@@ -752,89 +762,6 @@ p, li, label {
     padding: 1.5rem 1.2rem;
     margin: 0 2rem;
   }
-
-  /* Floating Glassmorphic Capsule Header & Collapsing State (glassmorphic update) */
-.header-wrapper {
-  position: fixed;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 3rem);
-  max-width: 900px;
-  height: var(--header-height);
-  z-index: 100;
-  border-radius: 100px;
-
-  /* Glass background: subtle translucent gradient + base tint for dark theme */
-  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
-  background-color: rgba(15, 15, 15, 0.28);
-
-  /* Frosted glass effect */
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
-
-  /* Thin border and soft shadow */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-
-  transition: var(--transition-smooth);
-  overflow: visible;
-}
-
-/* Decorative gradient border / highlight layer */
-.header-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-
-  /* Very subtle highlight line that reads as a glossy edge */
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.00));
-  mix-blend-mode: overlay;
-  z-index: 0;
-  filter: blur(0.5px);
-}
-
-/* Optional soft noise/texture (uncomment and provide a tiny data-URI/sprite if desired)
-.header-wrapper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background-image: url('data:image/svg+xml;utf8,...'); 
-  opacity: 0.02;
-  mix-blend-mode: overlay;
-  z-index: 0;
-}
-*/
-
-/* Ensure header content sits above pseudo-elements */
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 0 1.8rem;
-  transition: var(--transition-smooth);
-  position: relative;
-  z-index: 1; /* keep content above the decorative layers */
-}
-
-/* Collapsed Header style (scrolled) — keep glass but slightly stronger */
-.header-wrapper.collapsed {
-  width: 125px;
-  height: 54px;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255,255,255,0.04);
-  background-color: rgba(15, 15, 15, 0.44);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-}
 
   .workflow-arrow {
     transform: rotate(90deg);
@@ -1071,7 +998,7 @@ p, li, label {
     z-index: 5;
   }
 }
-/* No left/right margins on collapsed header items */
+
 .collapsed .header-container * {
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -1229,7 +1156,7 @@ p, li, label {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* Spans full text width */
+  width: 100%;
   height: 2px;
   background: #ffffff;
   border-radius: 2px;
@@ -1239,7 +1166,7 @@ p, li, label {
 .quote-text {
   position: relative;
   display: inline-block;
-  padding: 0 3rem; /* Leave spacing for quotes */
+  padding: 0 3rem;
 }
 
 .quote-text::before {
@@ -1247,7 +1174,7 @@ p, li, label {
   position: absolute;
   left: 0;
   top: -1rem;
-  font-size: 4rem; /* Sized up quotes */
+  font-size: 4rem;
   line-height: 1;
   color: rgba(255, 255, 255, 0.25);
   font-family: Georgia, serif;
@@ -1258,9 +1185,8 @@ p, li, label {
   position: absolute;
   right: 0;
   bottom: -2.2rem;
-  font-size: 4rem; /* Sized up quotes */
+  font-size: 4rem;
   line-height: 1;
   color: rgba(255, 255, 255, 0.25);
   font-family: Georgia, serif;
 }
-
