@@ -233,6 +233,12 @@ export default function Strands({
     const ctn = ctnDom.current;
     if (!ctn) return;
 
+    // Horizontal bleed (CSS pixels) on each side so glow/filters don't get clipped.
+    const BLEED = 48;
+
+    // allow the canvas to visually overflow the container
+    ctn.style.overflow = 'visible';
+
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
@@ -244,6 +250,15 @@ export default function Strands({
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = 'transparent';
 
+    // set initial renderer/canvas size including bleed so internal pixel buffer has extra space
+    const initialCssWidth = ctn.offsetWidth + BLEED * 2;
+    const initialCssHeight = ctn.offsetHeight;
+    renderer.setSize(initialCssWidth, initialCssHeight);
+    // keep layout unchanged by shifting canvas left by BLEED
+    gl.canvas.style.width = initialCssWidth + 'px';
+    gl.canvas.style.height = initialCssHeight + 'px';
+    gl.canvas.style.marginLeft = -BLEED + 'px';
+
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
       delete geometry.attributes.uv;
@@ -254,7 +269,8 @@ export default function Strands({
       fragment: FRAG,
       uniforms: {
         uTime: { value: 0 },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+        // set a placeholder; we'll overwrite with actual internal pixel size below
+        uResolution: { value: [gl.canvas.width, gl.canvas.height] },
         uColors: { value: buildPalette(propsRef.current.colors) },
         uColorCount: { value: Math.min(propsRef.current.colors.length, MAX_COLORS) },
         uStrandCount: { value: Math.min(propsRef.current.count, MAX_STRANDS) },
@@ -275,9 +291,10 @@ export default function Strands({
 
     const mesh = new Mesh(gl, { geometry, program });
 
+    // create render target using the internal GL buffer size (device pixels)
     const renderTarget = new RenderTarget(gl, {
-      width: ctn.offsetWidth,
-      height: ctn.offsetHeight
+      width: gl.canvas.width,
+      height: gl.canvas.height
     });
 
     const glassProgram = new Program(gl, {
@@ -285,7 +302,7 @@ export default function Strands({
       fragment: GLASS_FRAG,
       uniforms: {
         uScene: { value: renderTarget.texture },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+        uResolution: { value: [gl.canvas.width, gl.canvas.height] },
         uRadius: { value: 0.46 * glassSize },
         uRefraction: { value: refraction },
         uDispersion: { value: dispersion }
@@ -293,13 +310,27 @@ export default function Strands({
     });
     const glassMesh = new Mesh(gl, { geometry, program: glassProgram });
 
+    // ensure shader uniforms use the actual internal pixel dimensions
+    program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
+    glassProgram.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
+
     ctn.appendChild(gl.canvas);
 
     const resizeObserver = new ResizeObserver(() => {
       if (!ctn) return;
       const width = ctn.offsetWidth;
       const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
+      const cssWidth = width + BLEED * 2;
+
+      // set renderer size (this updates gl.canvas.width/height to device pixels)
+      renderer.setSize(cssWidth, height);
+
+      // keep the canvas visually centered by shifting left by BLEED
+      gl.canvas.style.width = cssWidth + 'px';
+      gl.canvas.style.height = height + 'px';
+      gl.canvas.style.marginLeft = -BLEED + 'px';
+
+      // update shader uniforms and render target with internal pixel size
       program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
       renderTarget.setSize(gl.canvas.width, gl.canvas.height);
       glassProgram.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
