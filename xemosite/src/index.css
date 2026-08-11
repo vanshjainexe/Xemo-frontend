@@ -753,6 +753,89 @@ p, li, label {
     margin: 0 2rem;
   }
 
+  /* Floating Glassmorphic Capsule Header & Collapsing State (glassmorphic update) */
+.header-wrapper {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 900px;
+  height: var(--header-height);
+  z-index: 100;
+  border-radius: 100px;
+
+  /* Glass background: subtle translucent gradient + base tint for dark theme */
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+  background-color: rgba(15, 15, 15, 0.28);
+
+  /* Frosted glass effect */
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+  /* Thin border and soft shadow */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+
+  transition: var(--transition-smooth);
+  overflow: visible;
+}
+
+/* Decorative gradient border / highlight layer */
+.header-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  /* Very subtle highlight line that reads as a glossy edge */
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.00));
+  mix-blend-mode: overlay;
+  z-index: 0;
+  filter: blur(0.5px);
+}
+
+/* Optional soft noise/texture (uncomment and provide a tiny data-URI/sprite if desired)
+.header-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,...'); 
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+*/
+
+/* Ensure header content sits above pseudo-elements */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.8rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  z-index: 1; /* keep content above the decorative layers */
+}
+
+/* Collapsed Header style (scrolled) — keep glass but slightly stronger */
+.header-wrapper.collapsed {
+  width: 125px;
+  height: 54px;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255,255,255,0.04);
+  background-color: rgba(15, 15, 15, 0.44);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
   .workflow-arrow {
     transform: rotate(90deg);
     margin: 0.5rem 0;
